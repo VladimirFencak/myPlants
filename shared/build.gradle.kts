@@ -33,7 +33,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                implementation(libs.sqlDelightRuntime)
+                implementation(libs.sqlDelightCoroutinesExtensions)
+                implementation(libs.coroutines)
             }
         }
         val commonTest by getting {
@@ -41,6 +43,17 @@ kotlin {
                 implementation(libs.kotlin.test)
             }
         }
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.coroutines)
+            }
+        }
+        val iosMain by getting {
+            dependencies {
+                implementation(libs.coroutines)
+            }
+        }
+
     }
 }
 
