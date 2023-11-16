@@ -1,0 +1,40 @@
+CREATE TABLE plant (
+    plantID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    imagePath TEXT,
+    plantName TEXT NOT NULL,
+    description TEXT,
+    waterAmount INTEGER NOT NULL,
+    wateringDate INTEGER NOT NULL,
+    watered INTEGER NOT NULL DEFAULT 0
+);
+
+insertPlantEntity:
+INSERT OR REPLACE
+INTO plant(
+    plantID,
+    imagePath,
+    plantName,
+    description,
+    waterAmount,
+    wateringDate,
+    watered
+)
+VALUES(?, ?, ?, ?, ?, ?, ?);
+
+getForgotenPlants:
+SELECT *
+FROM plant
+WHERE wateringDate < ? AND watered = 0
+ORDER BY wateringDate DESC;
+
+getUpcomingPlants:
+SELECT *
+FROM plant
+WHERE watered = 0
+ORDER BY wateringDate DESC;
+
+getHistoryPlants:
+SELECT *
+FROM plant
+WHERE watered = 1
+ORDER BY wateringDate DESC;

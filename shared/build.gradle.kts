@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.androidLibrary)
+    id("app.cash.sqldelight")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -41,16 +42,22 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(libs.kotlin.test)
+                implementation(libs.sqlDelightRuntime)
+                implementation(libs.sqlDelightCoroutinesExtensions)
             }
         }
         val androidMain by getting {
             dependencies {
                 implementation(libs.coroutines)
+                implementation(libs.sqlDelightAndroidDriver)
+                implementation(libs.sqlDelightCoroutinesExtensions)
             }
         }
         val iosMain by getting {
             dependencies {
                 implementation(libs.coroutines)
+                implementation(libs.sqlDelightNativeDriver)
+                implementation(libs.sqlDelightCoroutinesExtensions)
             }
         }
 
@@ -62,5 +69,12 @@ android {
     compileSdk = 34
     defaultConfig {
         minSdk = 26
+    }
+}
+sqldelight {
+    databases{
+        create("PlantsDatabase") {
+            packageName.set("com.fencak.myplants.database")
+        }
     }
 }

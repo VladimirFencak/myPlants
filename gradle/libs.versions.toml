@@ -5,8 +5,8 @@ compose = "1.5.1"
 compose-compiler = "1.5.3"
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.7.2"
-sqlDelightVersion = "1.5.4"
-sqlDelightGradleVersion = "1.5.3"
+sqlDelightVersion = "2.0.0"
+sqlDelightGradleVersion = "2.0.0"
 hiltVersion = "2.42"
 hiltCompilerVersion = "1.0.0"
 
@@ -21,17 +21,17 @@ compose-material3 = { module = "androidx.compose.material3:material3", version.r
 
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.6.0" }
 
-sqlDelightRuntime = { module = "com.squareup.sqldelight:runtime", version.ref = "sqlDelightVersion" }
-sqlDelightAndroidDriver = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqlDelightVersion" }
-sqlDelightNativeDriver = { module = "com.squareup.sqldelight:native-driver", version.ref = "sqlDelightVersion" }
-sqlDelightCoroutinesExtensions = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqlDelightVersion" }
-sqlDelightGradlePlugin = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "sqlDelightGradleVersion"}
+sqlDelightRuntime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelightVersion" }
+sqlDelightAndroidDriver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelightVersion" }
+sqlDelightNativeDriver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelightVersion" }
+sqlDelightCoroutinesExtensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelightVersion" }
+sqlDelightGradlePlugin = { module = "app.cash.sqldelight:gradle-plugin", version.ref = "sqlDelightGradleVersion" }
 
 hiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
 hiltAndroidCompiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
 hiltCompiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompilerVersion" }
 hiltNavigationCompose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltCompilerVersion" }
-hiltGradlePlugin = {module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltVersion" }
+hiltGradlePlugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -39,3 +39,4 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelightVersion" }
