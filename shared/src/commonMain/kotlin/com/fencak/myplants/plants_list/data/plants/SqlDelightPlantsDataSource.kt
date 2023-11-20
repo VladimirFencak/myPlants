@@ -24,6 +24,7 @@ class SqlDelightPlantsDataSource(
             waterAmount = item.waterAmount.toLong(),
             wateringDay = item.wateringDay.toInt().toLong(),
             wateringTime = item.wateringTime,
+            timestamp = item.timestamp
         )
     }
 

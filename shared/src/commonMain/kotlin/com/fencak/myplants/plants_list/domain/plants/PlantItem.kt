@@ -8,7 +8,8 @@ data class PlantItem(
     val waterAmount: Int,
     val wateringDay: WateringDay,
     val wateringTime: String,
-    val lastWateredDate: Int?
+    val lastWateredDate: Long?,
+    val timestamp: Long
 )
 
 enum class WateringDay {

@@ -14,6 +14,7 @@ fun GetPlantsWithLastWateredDate.toPlantItem(): PlantItem {
         waterAmount = waterAmount.toInt(),
         wateringTime = wateringTime,
         wateringDay = wateringDay.toInt().toWateringDay(),
-        lastWateredDate = lastWateredDate?.toInt()
+        lastWateredDate = lastWateredDate,
+        timestamp = timestamp
     )
 }

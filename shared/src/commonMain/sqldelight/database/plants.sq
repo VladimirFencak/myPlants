@@ -5,7 +5,8 @@ CREATE TABLE plant (
     description TEXT,
     waterAmount INTEGER NOT NULL,
     wateringDay INTEGER NOT NULL DEFAULT 0,
-    wateringTime TEXT NOT NULL DEFAULT "09:00"
+    wateringTime TEXT NOT NULL DEFAULT "09:00",
+    timestamp INTEGER NOT NULL
 );
 
 insertPlantEntity:
@@ -17,9 +18,10 @@ INTO plant(
     description,
     waterAmount,
     wateringDay,
-    wateringTime
+    wateringTime,
+    timestamp
 )
-VALUES(?, ?, ?, ?, ?, ?, ?);
+VALUES(?, ?, ?, ?, ?, ?, ?, ?);
 
 insertWateringHistoryEntity:
 INSERT
