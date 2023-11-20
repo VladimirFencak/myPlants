@@ -4,8 +4,8 @@ CREATE TABLE plant (
     plantName TEXT NOT NULL,
     description TEXT,
     waterAmount INTEGER NOT NULL,
-    wateringDate INTEGER NOT NULL,
-    watered INTEGER NOT NULL DEFAULT 0
+    wateringDay INTEGER NOT NULL DEFAULT 0,
+    wateringTime TEXT NOT NULL DEFAULT "09:00"
 );
 
 insertPlantEntity:
@@ -16,25 +16,55 @@ INTO plant(
     plantName,
     description,
     waterAmount,
-    wateringDate,
-    watered
+    wateringDay,
+    wateringTime
 )
 VALUES(?, ?, ?, ?, ?, ?, ?);
 
-getForgotenPlants:
+insertWateringHistoryEntity:
+INSERT
+INTO watering_history(
+    historyID,
+    plantID,
+    wateringDate
+)
+VALUES(?,?,?);
+--------------------------------------------------------------------------------------------------------------------
+
+getPlants:
 SELECT *
-FROM plant
-WHERE wateringDate < ? AND watered = 0
+FROM plant;
+
+getLastWateredDate:
+SELECT MAX(wateringDate) AS lastWateredDate
+FROM watering_history
+WHERE plantID = ?;
+
+getWateredHistory:
+SELECT *
+FROM watering_history
+WHERE plantID = ?
 ORDER BY wateringDate DESC;
 
-getUpcomingPlants:
-SELECT *
-FROM plant
-WHERE watered = 0
-ORDER BY wateringDate DESC;
+getPlantsWithLastWateredDate:
+SELECT
+    p.*,
+    wh.lastWateredDate
+FROM
+    plant AS p
+LEFT JOIN (
+    SELECT
+        plantID,
+        MAX(wateringDate) AS lastWateredDate
+    FROM
+        watering_history
+    GROUP BY
+        plantID
+) AS wh ON p.plantID = wh.plantID;
 
-getHistoryPlants:
-SELECT *
-FROM plant
-WHERE watered = 1
-ORDER BY wateringDate DESC;
+CREATE TABLE watering_history (
+    historyID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    plantID INTEGER NOT NULL,
+    wateringDate INTEGER NOT NULL,
+    FOREIGN KEY (plantID) REFERENCES plant(plantID)
+);

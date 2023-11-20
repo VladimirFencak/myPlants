@@ -37,6 +37,7 @@ kotlin {
                 implementation(libs.sqlDelightRuntime)
                 implementation(libs.sqlDelightCoroutinesExtensions)
                 implementation(libs.coroutines)
+                implementation(libs.kotlinDateTime)
             }
         }
         val commonTest by getting {

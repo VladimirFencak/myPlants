@@ -9,6 +9,8 @@ sqlDelightVersion = "2.0.0"
 sqlDelightGradleVersion = "2.0.0"
 hiltVersion = "2.42"
 hiltCompilerVersion = "1.0.0"
+dateTimeVersion = "0.4.0"
+
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -20,6 +22,8 @@ compose-foundation = { module = "androidx.compose.foundation:foundation", versio
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.6.0" }
+
+kotlinDateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "dateTimeVersion" }
 
 sqlDelightRuntime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelightVersion" }
 sqlDelightAndroidDriver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelightVersion" }
